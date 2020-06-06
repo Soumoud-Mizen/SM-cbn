@@ -1,0 +1,7 @@
+{
+  "name": "ng-ion-4-starter",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

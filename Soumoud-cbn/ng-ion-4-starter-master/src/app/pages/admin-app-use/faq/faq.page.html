@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="adminMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/admin-app-use/faq/add">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      FAQ
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br />
+  <div class="ion-padding">
+    <ion-list>
+      <ion-item
+        detail="true"
+        *ngFor="let faq of faqs"
+        routerLink="/admin-app-use/faq/show/{{ faq._id }}"
+      >
+        {{ faq.title }}
+      </ion-item>
+    </ion-list>
+    <ng-template *ngIf="faqs.length === 0" > <i>Vide...</i></ng-template>
+  </div>
+</ion-content>

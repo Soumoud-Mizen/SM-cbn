@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-back-button text="Retour"></ion-back-button>
+        </ion-buttons>
+    <ion-title >
+      {{ product.title }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title style="text-align: center;color:#FFF;">
+        {{ product.title }}
+      </ion-card-title>
+      <img [src]="product.img" alt="" />
+      <ion-card-title>
+        <ion-badge *ngIf="product.cat === 'Offre'" color="primary"
+          >{{ product.cat }}</ion-badge
+        ><ion-badge *ngIf="product.cat === 'Goûts'" color="secondary"
+          >{{ product.cat }}</ion-badge
+        >
+        &nbsp;
+        <ion-badge *ngIf="product.status === 'disponible'" color="success"
+          >Dispinible</ion-badge
+        ><ion-badge *ngIf="product.status === 'pas disponible'" color="danger"
+          >Pas dispinible</ion-badge
+        >&nbsp;
+        <ion-badge color="tertiary">{{ product.price }}€</ion-badge>
+      </ion-card-title>
+      <ion-card-subtitle style="color:#FFF;">{{ product.desc }}</ion-card-subtitle>
+      <br>
+    </ion-card-header>
+  </ion-card>
+  <ion-button expand="full" fill="clear" color="default" (click)="changeStatus('pas disponible')" *ngIf="product.status === 'disponible'" >Désactiver</ion-button>
+  <ion-button expand="full" fill="clear" color="default" (click)="changeStatus('disponible')" *ngIf="product.status === 'pas disponible'">Activer</ion-button>
+  <ion-button (click)="deleteProduct()" expand="full" fill="clear" color="danger">Supprimer</ion-button>
+</ion-content>

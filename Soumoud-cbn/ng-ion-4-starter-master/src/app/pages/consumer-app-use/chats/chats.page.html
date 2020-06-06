@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Chats
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+
+  <ion-list>
+    <ion-item
+    name="add"
+      routerLink="/consumer-app-use/chats/{{ prv }}"
+      detail="true"
+      *ngFor="let prv of provs"
+    >
+      <p>
+        {{ prv }}
+      </p>
+    </ion-item>
+  </ion-list>
+  <ng-template *ngIf="provs.length === 0" > <i>Vide...</i></ng-template>
+</ion-content>

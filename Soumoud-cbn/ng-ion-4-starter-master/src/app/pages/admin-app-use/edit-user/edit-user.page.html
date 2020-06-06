@@ -1,0 +1,355 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title  *ngIf="userData"
+      >Editer {{ userData.nom_de_famille }} {{ userData.prenom }}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="step === 1 && authFormStep1">
+  <ion-content>
+    <form
+      [formGroup]="authFormStep1"
+      (ngSubmit)="onSubmitStep1(authFormStep1.value)"
+      class="ctn-controls"
+    >
+      <div *ngIf="role === 'provider'">
+        <ion-item>
+          <ion-label position="floating" color="primary">
+            <ion-icon slot="start" color="primary" name="person"></ion-icon>
+            Nom du magasin</ion-label
+          >
+          <ion-input formControlName="providerName" type="text"></ion-input>
+        </ion-item>
+
+        <div
+          *ngIf="submitted && frm.providerName.errors"
+          class="invalid-feedback"
+        >
+          <ion-item lines="none" *ngIf="frm.providerName.errors.required">
+            <p style="color:red">
+              Le nom du magasin est requis !
+            </p>
+          </ion-item>
+          <ion-item lines="none" *ngIf="frm.providerName.errors.minlength">
+            <p style="color:red">
+              le nom du magasin doit être au moins de 3 caractères !
+            </p>
+          </ion-item>
+          <ion-item lines="none" *ngIf="frm.providerName.errors.pattern">
+            <p style="color:red">
+              le nom du magasin doit contient seulement des caractères et
+              numéros.
+            </p>
+          </ion-item>
+        </div>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="person"></ion-icon>
+          Nom de famile</ion-label
+        >
+        <ion-input formControlName="nom_de_famille" type="text"></ion-input>
+      </ion-item>
+
+      <div
+        *ngIf="submitted && frm.nom_de_famille.errors"
+        class="invalid-feedback"
+      >
+        <ion-item lines="none" *ngIf="frm.nom_de_famille.errors.required">
+          <p style="color:red">
+            Nom de famile est requis !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.nom_de_famille.errors.minlength">
+          <p style="color:red">
+            le nom de famile doit être au moins de 3 caractères !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.nom_de_famille.errors.pattern">
+          <p style="color:red">
+            le nom de famile doit être entre 3 et 32 caractères!
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="person"></ion-icon>
+          Prénom</ion-label
+        >
+        <ion-input formControlName="prenom" type="text"></ion-input>
+      </ion-item>
+
+      <div *ngIf="submitted && frm.prenom.errors" class="invalid-feedback">
+        <ion-item lines="none" *ngIf="frm.prenom.errors.required">
+          <p style="color:red">Prénom est requis !</p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.prenom.errors.minlength">
+          <p style="color:red">
+            le prénom doit être au moins de 3 caractères !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.prenom.errors.pattern">
+          <p style="color:red">
+            le prénom doit être entre 3 et 32 caractères!
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="mail"></ion-icon>
+          Email</ion-label
+        >
+        <ion-input formControlName="email" type="email"></ion-input>
+      </ion-item>
+
+      <div *ngIf="submitted && frm.email.errors" class="invalid-feedback">
+        <ion-item lines="none" *ngIf="frm.email.errors.required">
+          <p style="color:red">Email est requis !</p>
+        </ion-item>
+        <ion-item
+          lines="none"
+          *ngIf="frm.email.errors.email  || frm.email.errors.pattern"
+        >
+          <p style="color:red">
+            L'email doit être une adresse email valide !
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="lock"></ion-icon>
+          Mot de passe</ion-label
+        >
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <div *ngIf="submitted && frm.password.errors" class="invalid-feedback">
+        <ion-item lines="none" *ngIf="frm.password.errors.required">
+          <p style="color:red">Mot de passe requis !</p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.password.errors.minlength">
+          <p style="color:red">
+            Le mot de passe doit être au moins de 6 caractères !
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="lock"></ion-icon>
+          Confirmez Mot de passe</ion-label
+        >
+        <ion-input
+          type="password"
+          formControlName="confirm_password"
+        ></ion-input>
+      </ion-item>
+
+      <div
+        *ngIf="submitted && (frm.confirm_password.errors || frm.password.errors )"
+        class="invalid-feedback"
+      >
+        <ion-item lines="none" *ngIf="frm.confirm_password.errors.required">
+          <p style="color:red">
+            Confirmez mot de passe requis !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.confirm_password.errors.minlength">
+          <p style="color:red">
+            Le confirmez mot de passe doit être au moins de 6 caractères !
+          </p>
+        </ion-item>
+      </div>
+
+      <div *ngIf="submitted && checkPwdIsSame()" class="invalid-feedback">
+        <ion-item lines="none">
+          <p style="color:red">
+            Les mots de passe ne correspondent pas !
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="call"></ion-icon>
+          Numéro</ion-label
+        >
+        <ion-input formControlName="numero" type="tel"></ion-input>
+      </ion-item>
+
+      <div *ngIf="submitted && frm.numero.errors" class="invalid-feedback">
+        <ion-item lines="none" *ngIf="frm.numero.errors.required">
+          <p style="color:red">
+            Le numéro portable est requis !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.numero.errors.pattern">
+          <p style="color:red">
+            Le numéro portable n'est valide pas !
+          </p>
+        </ion-item>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating" color="primary">
+          <ion-icon slot="start" color="primary" name="barcode"></ion-icon>
+          CIN</ion-label
+        >
+        <ion-input formControlName="cin" type="number"></ion-input>
+      </ion-item>
+
+      <div *ngIf="submitted && frm.cin.errors" class="invalid-feedback">
+        <ion-item lines="none" *ngIf="frm.cin.errors.required">
+          <p style="color:red">
+            CIN est requis !
+          </p>
+        </ion-item>
+        <ion-item lines="none" *ngIf="frm.cin.errors.pattern">
+          <p style="color:red">
+            Le cin portable n'est valide pas !
+          </p>
+        </ion-item>
+      </div>
+
+      <br />
+      <ion-button type="submit" expand="full" color="primary"
+        >Suivant</ion-button
+      >
+    </form>
+  </ion-content>
+</ng-container>
+
+<ng-container *ngIf="step === 2 && authFormStep1">
+  <ion-content class="ion-padding">
+    <br />
+
+    <div *ngIf="image.length === 0 && userData" class="sub-question-label">
+      <img [src]="userData.path_img_cin" alt="CIN" />
+      <br />
+      <ion-label color="primary">
+        <ion-icon slot="start" color="secondary" name="cloud-upload"></ion-icon>
+        <span style="text-align:center;"
+          >Télécharger une copie de votre pièce d'identité à partir de votre
+          :</span
+        >
+      </ion-label>
+      <br />
+      <br />
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              expand="full"
+              fill="outline"
+              detail="false"
+              lines="none"
+              (click)="loadfromLibrary()"
+            >
+              <ion-icon slot="start" color="primary" name="images"></ion-icon>
+              <div style="color:var(--ion-color-secondary);">
+                Charger depuis la bibliothèque
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row><ion-col></ion-col></ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button
+              expand="full"
+              fill="outline"
+              detail="false"
+              lines="none"
+              (click)="useCamera()"
+            >
+              <ion-icon slot="start" color="primary" name="camera"></ion-icon>
+              <div style="color:var(--ion-color-secondary);">
+                Utiliser la caméra
+              </div>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <br />
+
+    <ion-list *ngIf="image.length !== 0">
+      <ion-item>
+        <ion-card>
+          <img [src]="image[0].path" />
+          <ion-card-header>
+            <ion-card-subtitle>{{ image[0].name }}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-button
+                    expand="full"
+                    fill="clear"
+                    style="float:right !important; color:red;"
+                    detail="false"
+                    lines="none"
+                    (click)="deleteImage(image[0], 0)"
+                  >
+                    Supprimer&nbsp;
+                    <ion-icon
+                      style="zoom:1.5;"
+                      slot="end"
+                      color="danger"
+                      name="trash"
+                    ></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            expand="full"
+            fill="clear"
+            detail="false"
+            lines="none"
+            (click)="step = 1"
+          >
+            <ion-icon slot="start" color="primary" name="arrow-back"></ion-icon>
+            <div style="color:var(--ion-color-secondary);">Retour</div>
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button
+            expand="full"
+            fill="clear"
+            style="float:right !important; color:var(--ion-color-secondary);"
+            detail="false"
+            lines="none"
+            (click)="onSubmitStep2()"
+          >
+            Valider &nbsp;&nbsp;
+            <ion-icon
+              slot="end"
+              color="primary"
+              name="arrow-forward"
+            ></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-footer>
+</ng-container>

@@ -1,0 +1,22 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="providerMenu" slot="start"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Chats
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br />
+    <ion-list>
+        <ion-item routerLink="/provider-app-use/chats/{{ cmd.id }}" detail="true" *ngFor="let cmd of cmds">
+            <p>
+                {{ cmd.fullname }}
+            </p>
+        </ion-item>
+    </ion-list>
+    <ng-template *ngIf="cmds.length === 0"> <i>Vide...</i></ng-template>
+</ion-content>

@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Ajouter FAQ
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <br />
+  <form [formGroup]="faqForm" (ngSubmit)="onSubmitFaqForm(faqForm.value)">
+    <ion-item>
+      <ion-label position="floating" color="primary">
+        <ion-icon slot="start" color="primary" name="create"></ion-icon>
+        Titre</ion-label
+      >
+      <ion-input formControlName="title" type="text" required></ion-input>
+    </ion-item>
+
+    <div *ngIf="submitted && frm.title.errors" class="invalid-feedback">
+      <ion-item lines="none" *ngIf="frm.title.errors.required">
+        <p style="color:red">
+          Le titre est requis !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.title.errors.minlength">
+        <p style="color:red">
+          Le titre doit être au moins de 3 caractères !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.title.errors.maxlength">
+        <p style="color:red">
+          Le titre doit être au moins de 50 caractères !
+        </p>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" color="primary">
+        <ion-icon slot="start" color="primary" name="create"></ion-icon>
+        Detail</ion-label
+      >
+      <ion-textarea rows="6" formControlName="detail"></ion-textarea>
+    </ion-item>
+
+    <div *ngIf="submitted && frm.detail.errors" class="invalid-feedback">
+      <ion-item lines="none" *ngIf="frm.detail.errors.required">
+        <p style="color:red">
+          Detail est requis !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.detail.errors.minlength">
+        <p style="color:red">
+          Le titre doit être au moins de 3 caractères !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.detail.errors.maxlength">
+        <p style="color:red">
+          Le titre doit être au moins de 1000 caractères !
+        </p>
+      </ion-item>
+    </div>
+
+    <br />
+    <ion-button type="submit" expand="full" color="primary">Valider</ion-button>
+  </form>
+</ion-content>

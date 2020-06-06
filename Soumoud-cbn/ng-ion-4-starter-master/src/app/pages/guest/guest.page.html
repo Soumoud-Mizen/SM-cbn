@@ -1,0 +1,14 @@
+<ion-content>
+  <div *ngIf="loading === true" class="box">
+    <div class="loader-32"></div>
+  </div>
+  <div id="map_canvas"></div>
+  <ion-button
+    *ngIf="nearProviderTitle !== ''"
+    id="btn-cmd"
+    (click)="presentAlertConfirm(nearProviderTitle)"
+    expand="full"
+    color="secondary"
+    >Parcourir {{ nearProviderTitle }}</ion-button
+  >
+</ion-content>

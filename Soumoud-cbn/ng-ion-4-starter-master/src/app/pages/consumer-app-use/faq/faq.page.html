@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" *ngIf="typeButton === 'show-menu' ">
+      <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="start" *ngIf="typeButton === 'show-return' ">
+        <ion-back-button text="Retour"></ion-back-button>
+      </ion-buttons>
+
+    <ion-title>
+      FAQ
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <br />
+
+  <mat-expansion-panel *ngFor="let faq of faqs">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ faq.title }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ faq.detail }}</p>
+  </mat-expansion-panel>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button routerLink="/" defaultHref="/" text="&nbsp;&nbsp;Accueil" icon="home">
+            </ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <div class="background-image">
+
+
+        <div class="logo-row">
+            <img class="logo-home" src="../../../assets/imgs/logo.png" alt="logo">
+        </div>
+
+        <h1 style="top:0">connectez-vous</h1>
+
+        <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)" class="ctn-controls background-transparent">
+            <ion-item class="input-item" style="width: 100%;">
+                <ion-label position="floating" color="light">
+                    <ion-icon slot="start" color="light" name="mail"></ion-icon>
+                    Email
+                </ion-label>
+                <ion-input formControlName="email" type="email" required></ion-input>
+            </ion-item>
+
+            <div *ngIf="submitted && frm.email.errors" class="invalid-feedback">
+                <ion-item *ngIf="frm.email.errors.required">
+                    <p style="color:red">Email est requis !</p>
+                </ion-item>
+                <ion-item *ngIf="frm.email.errors.email">
+                    <p style="color:red">L'email doit être une adresse email valide !</p>
+                </ion-item>
+            </div>
+
+            <ion-item class="input-item-last-child">
+                <ion-label position="floating" color="light">
+                    <ion-icon slot="start" color="light" name="lock"></ion-icon>
+                    Mot de passe
+                </ion-label>
+                <ion-input type="password" formControlName="password" required></ion-input>
+            </ion-item>
+
+            <div *ngIf="submitted && frm.password.errors" class="invalid-feedback">
+                <ion-item *ngIf="frm.password.errors.required">
+                    <p style="color:red">Mot de passe requis !</p>
+                </ion-item>
+                <ion-item *ngIf="frm.password.errors.minlength">
+                    <p style="color:red">
+                        Le mot de passe doit être au moins de 6 caractères !
+                    </p>
+                </ion-item>
+            </div>
+            <br>
+
+            <ion-button class="button-starter" type="submit" expand="full" color="primary">Connexion</ion-button>
+
+            <div (click)="openAlert()" style="bottom:0;  color:#eee">
+                <ion-icon slot="start" color="secondary" name="eye"></ion-icon>
+                avez oublié votre mot de passe
+            </div>
+            <br />
+        </form>
+    </div>
+</ion-content>
+
+<ion-footer>
+    <ion-grid>
+        <ion-row>
+            <ion-col className="ion-text-center">
+                <ion-item lines="none" routerLink="/register-consumer">
+                    <ion-icon slot="start" color="primary" name="person-add"></ion-icon>
+                    Vous avez pas de compte ?
+                    <br /> en un maintenant !
+                </ion-item>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-footer>

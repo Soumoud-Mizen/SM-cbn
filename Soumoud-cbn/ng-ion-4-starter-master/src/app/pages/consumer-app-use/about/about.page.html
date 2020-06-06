@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      A propos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <ion-list>
+    <ion-item detail="true" (click)="openRate()">
+      Notez-nous dans l'App Store
+    </ion-item>
+    <ion-item detail="true">
+      <p (click)="openLink('http://www.exmple.com/')">WWW.EXMPLE.COM</p>
+    </ion-item>
+
+    <ion-item detail="true" *ngIf="urlML">
+      <p (click)="openLink(urlML)">Mentions légales</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

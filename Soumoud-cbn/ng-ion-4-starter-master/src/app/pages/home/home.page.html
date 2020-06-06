@@ -1,0 +1,36 @@
+<ion-content fullscreen="true">
+    <div class="background-image">
+        <div class="logo-row">
+            <img class="logo-home" src="../../../assets/imgs/logo.png" alt="logo">
+        </div>
+
+        <div>
+            <h1>Votre produit</h1>
+            <h1>quand vous voulez</h1>
+            <h1>ou vous voulez</h1>
+            <h2>dans toute la france</h2>
+        </div>
+
+        <div class="btns-ctn">
+            <div class="shadow-red" routerLink="/login">
+                <!-- <ion-icon slot="start" color="light" name="log-in"></ion-icon> -->
+                Se connecter
+            </div>
+
+            <div class="shadow-red" (click)="openRegisterPage('consumer')">
+                <!-- <ion-icon slot="start" color="light" name="person-add"></ion-icon> -->
+                S’inscrire
+            </div>
+
+            <div class="shadow-red" routerLink="/guest">
+                <!-- <ion-icon slot="start" color="light" name="person"></ion-icon> -->
+                Continuer en tant qu’inviter
+            </div>
+
+            <div class="shadow-red" (click)="openRegisterPage('provider-not-confirmed')">
+                <!-- <ion-icon slot="start" color="light" name="people"></ion-icon> -->
+                Devenir fournisseur
+            </div>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,95 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-back-button text="Retour"></ion-back-button>
+        </ion-buttons>
+        <ion-title *ngIf="prov"> {{ prov.providerName }}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-tabs>
+        <ion-tab-bar slot="top">
+            <ion-tab-button href="javascript:void(0)" tab="/consumer-app-use/provider" (click)="setThe('gouts')">
+                <ion-icon name="calendar"></ion-icon>
+                <ion-label>Goûts</ion-label>
+                <ion-badge>{{ gouts.length }}</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button href="javascript:void(0)" tab="/consumer-app-use/provider" (click)="setThe('offre')">
+                <ion-icon name="contacts"></ion-icon>
+                <ion-label>Offre</ion-label>
+                <ion-badge>{{ offres.length }}</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button href="javascript:void(0)" selected="true" tab="/consumer-app-use/provider" (click)="setThe('all')">
+                <ion-icon name="map"></ion-icon>
+                <ion-label>Goûts & Offre</ion-label>
+                <ion-badge>{{ products.length }}</ion-badge>
+            </ion-tab-button>
+
+            <ion-tab-button href="javascript:void(0)" tab="/consumer-app-use/provider" (click)="setThe('')">
+                <ion-icon name="information-circle"></ion-icon>
+                <ion-label>Ouverture des livraisons</ion-label>
+            </ion-tab-button>
+        </ion-tab-bar>
+    </ion-tabs>
+    <br /><br /><br />
+    <ion-slides pager="false" [options]="slideOpts" *ngIf="!isDeliveryTime">
+        <ion-slide *ngFor="let product of shows">
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-title style="text-align: center;">
+                        {{ product.title }}
+                    </ion-card-title>
+                    <img [src]="product.img" alt="" />
+                    <ion-card-title>
+                        <ion-badge *ngIf="product.cat === 'Offre'" color="primary">{{ product.cat }}</ion-badge>
+                        <ion-badge *ngIf="product.cat === 'Goûts'" color="secondary">{{ product.cat }}</ion-badge>
+                        &nbsp;
+                        <ion-badge *ngIf="product.status === 'disponible'" color="success">Dispinible</ion-badge>
+                        <ion-badge *ngIf="product.status === 'pas disponible'" color="danger">Pas dispinible</ion-badge>&nbsp;
+                        <ion-badge color="tertiary">{{ product.price }}€</ion-badge>
+                    </ion-card-title>
+                    <ion-card-subtitle>{{ product.desc }}</ion-card-subtitle>
+                    <br />
+                    <ion-button expand="full" (click)="makePayment(product)">
+                        <ion-icon slot="start" name="cart"></ion-icon>
+                        Commander</ion-button>
+                </ion-card-header>
+            </ion-card>
+        </ion-slide>
+    </ion-slides>
+
+    <ion-card *ngIf="isDeliveryTime">
+        <ion-card-header>
+            <ion-card-title style="text-align: center;">
+                Ouverture des livraisons
+            </ion-card-title>
+            <img src="../../../../assets/imgs/isDeliveryTime.png" alt="isDeliveryTime" />
+            <ion-card-title *ngIf="prov">{{ prov.deliveryTime }} </ion-card-title>
+        </ion-card-header>
+    </ion-card>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-tabs>
+            <ion-tab-bar slot="bottom">
+                <ion-tab-button (click)="openLink(settingsData.settings.adminLinkPDFToBeProvider)" tab="/consumer-app-use/provider">
+                    <ion-icon name="contacts"></ion-icon>
+                    <ion-label>Devenez partenaire</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button (click)="openLink(settingsData.settings.adminLinkToRecommandation)" tab="/consumer-app-use/provider">
+                    <ion-icon name="star"></ion-icon>
+                    <ion-label>Ils nous recommandent</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button routerLink="/consumer-app-use/faq/show-return">
+                    <ion-icon name="help"></ion-icon>
+                    <ion-label>FAQ</ion-label>
+                </ion-tab-button>
+            </ion-tab-bar>
+        </ion-tabs>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Moyens de paiement
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-text-center">
+  <ion-list >
+    <ion-item *ngFor="let card of cards">
+      <ion-label
+        ><ion-icon name="card" slot="start"></ion-icon> {{ card.brand }}<br/>
+        <ion-icon *ngFor="let i of [0,1,2,3,4,5]" name="medical" slot="start"></ion-icon>{{ card.last4 }}
+        </ion-label>
+        <ion-icon (click)="deleteCard(card._id)" color="secondary" name="trash" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-grid class="ion-text-center">
+    <ion-row>
+      <ion-col (click)="presentModalCreatePayment()">
+        <ion-icon name="add" slot="start"></ion-icon> <span style="color:#FFF;">Ajouter un moyen de
+          paiement</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

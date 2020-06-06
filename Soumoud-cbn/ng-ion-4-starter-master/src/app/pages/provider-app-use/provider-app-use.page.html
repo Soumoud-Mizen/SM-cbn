@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="providerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Bonjour, {{ userData.providerName }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <img [src]="userData.path_img_cin" alt="CIN" />
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <ion-icon color="primary" name="person" slot="start"></ion-icon>
+      <ion-label>{{ userData.nom_de_famille }} {{ userData.prenom }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="primary" name="mail" slot="start"></ion-icon>
+      <ion-label>{{ userData.email }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="primary" name="call" slot="start"></ion-icon>
+      <ion-label>{{ userData.numero }}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon color="primary" name="barcode" slot="start"></ion-icon>
+      <ion-label>{{ userData.path_txt_cin }}</ion-label>
+    </ion-item>
+    
+  </ion-card>
+</ion-content>

@@ -1,0 +1,81 @@
+.background-image {
+    --background: url(../../../assets/imgs/bg.jpg) 0 0/100% 100% no-repeat !important;
+    background: url(../../../assets/imgs/bg.jpg) 0 0/100% 100% no-repeat !important;
+    width: 100%;
+    height: 100%;
+}
+
+ion-item {
+    --background: rgba(0, 0, 0, 0);
+    --border-color: rgba(0, 0, 0, 0);
+    --color: white;
+}
+
+.btns-ctn {
+    position: absolute;
+    background-color: transparent;
+    background: transparent;
+    text-align: center;
+    width: 300px;
+    height: 200px;
+    bottom: 0px;
+    right: 25%;
+    left: 50%;
+    margin-left: -150px;
+}
+
+ion-button {
+    box-shadow: 0px 4px 15px var(--ion-color-secondary);
+    border-radius: 50px !important;
+    background-color: transparent;
+    background: transparent;
+}
+
+.logo-row {
+    width: 250px;
+    margin: 0 auto;
+}
+
+.logo-home {
+    margin-top: 1rem;
+    width: 100%;
+    height: 150px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    width: 100%;
+    font-weight: bold;
+    color: #fff;
+    // background-color: rgba(0, 0, 0, 0.472);
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+h2 {
+    font-size: 1em;
+    width: 100%;
+    font-weight: bold;
+    color: var(--ion-color-primary);
+    // background-color: white;
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.shadow-red {
+    background-color: var(--ion-color-primary);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 50px;
+    outline: none;
+    color: white;
+}
+
+.shadow-red:active {
+    background-color: var(--ion-color-secondary);
+}

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="order">
+      {{ order.description }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="order">
+  <br />
+  <ion-list>
+    <ion-item>
+      {{ order.description }}
+    </ion-item>
+    <ion-item>
+      {{ order.brand_card }} &nbsp; *** {{ order.last_4_card }}
+    </ion-item>
+    <ion-item>
+      <p>
+        <ion-badge *ngIf="order.status === 'succeeded'" color="success"
+          >OK</ion-badge
+        ><ion-badge *ngIf="order.status !== 'succeeded'" color="danger"
+          >KO</ion-badge
+        >
+      </p>
+    </ion-item>
+    <ion-item>
+      {{ order.amount }}€
+    </ion-item>
+    <ion-item>
+     <i> charge_id : {{ order.charge_id }}</i>
+    </ion-item>
+  </ion-list>
+</ion-content>

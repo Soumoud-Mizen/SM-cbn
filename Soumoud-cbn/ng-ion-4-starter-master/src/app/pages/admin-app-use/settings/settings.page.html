@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="adminMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Paramètres
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-content>
+    <br />
+    <ion-item>
+      <ion-icon color="primary" name="cog" slot="start"></ion-icon>
+      <ion-label>Lien pdf à télécharger</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="userData">
+      <ion-icon color="primary" name="" slot="start"></ion-icon>
+      <ion-label>{{ userData.adminLinkPDFToBeProvider }}</ion-label>
+    </ion-item>
+    <br />
+    <ion-button
+      (click)="presentAlertPrompt('adminLinkPDFToBeProvider', 'Changer lien pdf à télécharger')"
+      color="secondary"
+      expand="full"
+    >
+      <ion-icon color="primary" slot="start" name="create"></ion-icon>
+      Editer
+    </ion-button>
+    <br />
+    <hr />
+    <br />
+
+    <ion-item>
+      <ion-icon color="primary" name="cog" slot="start"></ion-icon>
+      <ion-label>Lien ils nous recommandent</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="userData">
+      <ion-icon color="primary" name="" slot="start"></ion-icon>
+      <ion-label>{{ userData.adminLinkToRecommandation }}</ion-label>
+    </ion-item>
+    <br />
+    <ion-button
+      (click)="presentAlertPrompt('adminLinkToRecommandation', 'Changer lien Ils nous recommandent')"
+      color="secondary"
+      expand="full"
+    >
+      <ion-icon color="primary" slot="start" name="create"></ion-icon>
+      Editer
+    </ion-button>
+    <br />
+    <hr />
+    <br />
+
+    <ion-item>
+      <ion-icon color="primary" name="cog" slot="start"></ion-icon>
+      <ion-label>Lien Mentions légales</ion-label>
+    </ion-item>
+
+    <ion-item *ngIf="userData">
+      <ion-icon color="primary" name="" slot="start"></ion-icon>
+      <ion-label>{{ userData.adminLinkMentionsLegales }}</ion-label>
+    </ion-item>
+    <br />
+    <ion-button
+      (click)="presentAlertPrompt('adminLinkMentionsLegales', 'Changer lien Mentions légales')"
+      color="secondary"
+      expand="full"
+    >
+      <ion-icon color="primary" slot="start" name="create"></ion-icon>
+      Editer
+    </ion-button>
+    <br />
+    <hr />
+    <br />
+  </ion-content>
+</ion-content>

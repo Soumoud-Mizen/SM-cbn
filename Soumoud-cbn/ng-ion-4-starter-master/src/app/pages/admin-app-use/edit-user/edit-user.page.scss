@@ -1,0 +1,14 @@
+ion-footer {
+    border-top: 1px dashed var(--ion-color-secondary);
+    background: rgb(54, 47, 55);
+    background: linear-gradient(
+      177deg,
+      rgba(54, 47, 55, 1) 0%,
+      rgba(54, 47, 55, 1) 25%,
+      rgba(65, 54, 60, 1) 50%,
+      rgba(64, 38, 37, 1) 76%,
+      rgba(44, 39, 45, 1) 100%
+    );
+    position: fixed;
+    bottom: 0;
+  }

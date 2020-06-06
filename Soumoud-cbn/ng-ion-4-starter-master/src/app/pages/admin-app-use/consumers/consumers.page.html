@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="adminMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Clients
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br />
+  <ion-searchbar
+    color="secondary"
+    [(ngModel)]="searchTerm"
+    (ionChange)="setFilteredItems()"
+  ></ion-searchbar>
+  <div class="ion-padding">
+    <i>Rechercher par : Email, prenom, numero, nom de famille, CIN...</i>
+    <ion-list>
+      <ion-item
+        detail="true"
+        *ngFor="let consumer of consumers"
+        routerLink="/admin-app-use/consumers/{{ consumer._id }}"
+      >
+        {{ consumer.prenom }} {{ consumer.nom_de_famille }} {{ consumer.numero
+        }}
+      </ion-item>
+    </ion-list>
+    <ng-template *ngIf="consumers.length === 0" > <i>Vide...</i></ng-template>
+  </div>
+</ion-content>

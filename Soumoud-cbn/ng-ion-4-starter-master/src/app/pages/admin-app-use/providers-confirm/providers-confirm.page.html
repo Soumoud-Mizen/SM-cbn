@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="adminMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Fournisseurs en attende
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br>
+  <ion-searchbar
+    color="secondary"
+    [(ngModel)]="searchTerm"
+    (ionChange)="setFilteredItems()"
+  ></ion-searchbar>
+  <div class="ion-padding">
+    <i
+      >Rechercher par : Email, nom de famille, prenom, numero, CIN, nom du
+      magasin</i
+    >
+    <ion-list>
+      <ion-item
+        *ngFor="let provider of providers"
+        detail="true"
+        routerLink="/admin-app-use/providers-confirm/{{ provider._id }}"
+      >
+        {{ provider.prenom }} {{ provider.nom_de_famille }} {{ provider.numero
+        }}
+      </ion-item>
+    </ion-list>
+    <ng-template *ngIf="providers.length === 0" > <i>Vide...</i></ng-template>
+  </div>
+</ion-content>

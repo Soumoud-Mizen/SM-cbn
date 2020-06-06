@@ -1,0 +1,167 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="Retour"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Ajouter un produit
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding">
+  <br />
+  <form
+    [formGroup]="addNewProductForm"
+    (ngSubmit)="onSubmitAddNewProductForm(addNewProductForm.value)"
+  >
+    <ion-item *ngIf="image.length !== 0">
+      <ion-list>
+        <ion-item>
+          <ion-card>
+            <img [src]="image[0].path" />
+            <ion-card-header>
+              <ion-card-subtitle>{{ image[0].name }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-button
+                      expand="full"
+                      fill="clear"
+                      style="float:right !important; color:red;"
+                      detail="false"
+                      lines="none"
+                      (click)="deleteImage(image[0], 0)"
+                    >
+                      Supprimer&nbsp;
+                      <ion-icon
+                        style="zoom:1.5;"
+                        slot="end"
+                        color="danger"
+                        name="trash"
+                      ></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-item>
+      </ion-list>
+    </ion-item>
+
+    <div *ngIf="image.length === 0" class="sub-question-label">
+      <ion-item> <ion-label> Image*</ion-label></ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button
+                expand="full"
+                fill="clear"
+                detail="false"
+                lines="none"
+                (click)="loadfromLibrary()"
+              >
+                <ion-icon slot="start" color="primary" name="images"></ion-icon>
+                <div style="color:var(--ion-color-secondary);">
+                  Charger depuis la bibliothèque
+                </div>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row><ion-col></ion-col></ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button
+                expand="full"
+                fill="clear"
+                detail="false"
+                lines="none"
+                (click)="useCamera()"
+              >
+                <ion-icon slot="start" color="primary" name="camera"></ion-icon>
+                <div style="color:var(--ion-color-secondary);">
+                  Utiliser la caméra
+                </div>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label>Catégories*</ion-label>
+      <ion-select
+        formControlName="category"
+        placeholder="Sélectionnez un"
+        require
+      >
+        <ion-select-option value="Goûts">Goûts</ion-select-option>
+        <ion-select-option value="Offre">Offre</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="submitted && frm.category.errors" class="invalid-feedback">
+      <ion-item lines="none" *ngIf="frm.category.errors.required">
+        <p style="color:red">
+          La catégorie est requis !
+        </p>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating"> Titre*</ion-label>
+      <ion-input formControlName="title" type="text" required></ion-input>
+    </ion-item>
+
+    <div *ngIf="submitted && frm.title.errors" class="invalid-feedback">
+      <ion-item lines="none" *ngIf="frm.title.errors.required">
+        <p style="color:red">
+          Le titre est requis !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.title.errors.minlength">
+        <p style="color:red">
+          Le titre doit être au moins de 3 caractères !
+        </p>
+      </ion-item>
+      <ion-item lines="none" *ngIf="frm.title.errors.maxLength">
+        <p style="color:red">
+          Le titre doit être entre 3 et 32 caractères!
+        </p>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="desc" ></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating"> Prix* (€)</ion-label>
+      <ion-input formControlName="price" type="number" required></ion-input>
+    </ion-item>
+
+    <div *ngIf="submitted && frm.price.errors" class="invalid-feedback">
+      <ion-item lines="none" *ngIf="frm.price.errors.required">
+        <p style="color:red">
+          Le prix est requis !
+        </p>
+      </ion-item>
+    </div>
+
+    <ion-item>
+      <ion-label *ngIf="disponible">Disponible</ion-label>
+      <ion-label *ngIf="!disponible">Pas disponible</ion-label>
+      <ion-toggle formControlName="status" [(ngModel)]="disponible" checked="disponible" ></ion-toggle>
+    </ion-item>
+
+    <br />
+    <ion-button type="submit" expand="full" color="primary">
+      <ion-icon slot="start" name="add-circle"></ion-icon>
+      Ajouter</ion-button
+    >
+  </form>
+</ion-content>

@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-buttons slot="start">
+            <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Historique des commandes
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <br />
+    <div class="ion-padding">
+        <ion-list>
+            <ion-item (click)="openOrderPage(pay)" detail="true" *ngFor="let pay of payments">
+                <p>
+                    <ion-badge *ngIf="pay.status === 'succeeded'" color="success">OK</ion-badge>
+                    <ion-badge *ngIf="pay.status !== 'succeeded'" color="danger">KO</ion-badge>
+                </p>
+                &nbsp;
+                <p>
+                    {{ pay.brand_card }} {{ pay.description }} {{ pay.amount }}€ <br />
+                    <i>{{ secondsToISOString(pay.created) }}</i>
+                </p>
+            </ion-item>
+        </ion-list>
+        <ng-template *ngIf="payments.length === 0"> <i>Vide...</i></ng-template>
+    </div>
+</ion-content>

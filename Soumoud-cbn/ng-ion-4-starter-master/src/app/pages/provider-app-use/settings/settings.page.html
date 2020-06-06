@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="providerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Paramètres
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br />
+  <ion-item *ngIf="userData">
+    <ion-icon color="primary" name="help" slot="start"></ion-icon>
+    <ion-label>Ouverture des livraisons</ion-label>
+  </ion-item>
+
+  <ion-item *ngIf="userData">
+    <ion-icon color="primary" name="time" slot="start"></ion-icon>
+    <ion-datetime
+      [pickerOptions]="customPickerOptions"
+      [value]="userData.deliveryTime"
+      displayFormat="HH:mm"
+    ></ion-datetime>
+  </ion-item>
+  <br />
+  <ion-button (click)="ChangeIT()" color="secondary" expand="full">
+    <ion-icon color="primary" slot="start" name="create"></ion-icon>
+    Charger ouverture des livraisons
+  </ion-button>
+  <br />
+  <hr />
+  <br />
+  <ion-item *ngIf="userData">
+    <ion-icon color="primary" name="locate" slot="start"></ion-icon>
+    <ion-label>Position GPS</ion-label>
+  </ion-item>
+  <ion-item *ngIf="userData">
+    <ion-icon color="primary" name="" slot="start"></ion-icon>
+    <ion-label>{{ userData.lat }}, {{ userData.lng }}</ion-label>
+  </ion-item>
+
+  <br />
+
+  <ion-button (click)="ChangeIT()" color="secondary" expand="full">
+    <ion-icon color="primary" slot="start" name="pin"></ion-icon>
+    Charger nouveau position GPS
+  </ion-button>
+</ion-content>

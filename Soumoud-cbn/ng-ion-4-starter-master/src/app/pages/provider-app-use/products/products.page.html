@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button menu="providerMenu" slot="start"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Produits
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <br>
+  <div style="background-color: var(--ion-color-secondary) !important;">
+    <ion-searchbar
+      color="light"
+      [(ngModel)]="searchTerm"
+      (ionChange)="setFilteredItems()"
+    ></ion-searchbar>
+  </div>
+  <ion-card>
+    <ion-button
+      (click)="addNewOne()"
+      expand="full"
+      fill="outline"
+      color="default"
+    >
+      <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+      Ajouter produit
+    </ion-button>
+  </ion-card>
+  <div class="ion-padding">
+    <i>Rechercher par : Titre, prix, description, catégories, statut</i>
+    <ion-list>
+      <ion-item
+        detail="true"
+        *ngFor="let product of products"
+        routerLink="/provider-app-use/products/{{ product._id }}"
+      >
+        <ion-grid>
+          <ion-row>
+            <ion-col size="2">
+              <ion-badge *ngIf="product.cat === 'Offre'" color="primary"
+                >{{ product.cat }}</ion-badge
+              ><ion-badge *ngIf="product.cat === 'Goûts'" color="secondary"
+                >{{ product.cat }}</ion-badge
+              >
+            </ion-col>
+            <ion-col size="10">
+              <span *ngIf="product.status === 'disponible'"
+                >&nbsp;
+                <ion-icon
+                  color="success"
+                  name="checkmark-circle-outline"
+                ></ion-icon
+              ></span>
+              <span *ngIf="product.status === 'pas disponible'"
+                >&nbsp; <ion-icon color="danger" name="close"></ion-icon
+              ></span>
+              &nbsp;{{ product.title }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

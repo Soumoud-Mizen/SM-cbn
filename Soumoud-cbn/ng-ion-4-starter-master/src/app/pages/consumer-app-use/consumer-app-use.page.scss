@@ -1,0 +1,116 @@
+#map_canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#btn-cmd {
+  position: absolute;
+  width: 100%;
+  border: 0;
+  margin: 0;
+  z-index: 9999;
+  bottom: 0;
+}
+
+#btn-cmd:active {
+  background-color: var(--ion-color-primary);
+}
+
+
+
+.box {
+    background: rgb(54, 47, 55);
+  background: linear-gradient(
+    177deg,
+    rgba(54, 47, 55, 1) 0%,
+    rgba(54, 47, 55, 1) 25%,
+    rgba(65, 54, 60, 1) 50%,
+    rgba(64, 38, 37, 1) 76%,
+    rgba(44, 39, 45, 1) 100%
+  );
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+  font-size: 8rem;
+  text-align: center;
+	padding: 1em;
+	position: fixed;
+	margin-bottom: .25em;
+	vertical-align: top;
+	transition: .3s color, .3s border, .3s transform, .3s opacity;
+
+	&:hover {
+		
+		background-color: rgba(0,0,0,.1);
+		font-size: 0;
+		padding: 0;
+		border-width: 3px;
+		line-height: 200px;
+		opacity: 1;
+		transform: scale(1.2);
+		z-index: 2;
+		[class*="loader-"] {
+			font-size: 70px;
+			line-height: 200px;
+		}
+	}
+}
+
+[class*="loader-"] {
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	color: inherit;
+	vertical-align: middle;
+	pointer-events: none;
+}
+
+.loader-32 {
+	position: relative;
+	border-radius: 50%;
+	box-shadow: 0 0 1em 0 var(--ion-color-primary), inset 0 0 1em 0 var(--ion-color-primary);
+	animation: 1s loader-32 linear infinite;
+	&:before,
+	&:after {
+		content: '';
+		display: block;
+		width: inherit;
+		height: inherit;
+		position: absolute;
+		border-radius: 50%;
+	}
+	&:before {
+		border-top: .2em solid var(--ion-color-primary);
+		border-right: .2em solid transparent;
+		top: .28em;
+		right: calc(50% - .22em);
+	}
+	&:after {
+		border-bottom: .2em solid var(--ion-color-primary);
+		border-left: .2em solid transparent;
+		bottom: .28em;
+		left: calc(50% - .22em);
+	}
+}
+
+@keyframes loader-32 {
+	0% {
+		transform: rotateX(-60deg) rotateZ(0deg);
+	}
+	100% {
+		transform: rotateX(-60deg) rotateZ(360deg);
+	}
+}
+
+
+ion-content {
+	background: rgb(54, 47, 55);
+	background: linear-gradient(
+	  177deg,
+	  rgba(54, 47, 55, 1) 0%,
+	  rgba(54, 47, 55, 1) 25%,
+	  rgba(65, 54, 60, 1) 50%,
+	  rgba(64, 38, 37, 1) 76%,
+	  rgba(44, 39, 45, 1) 100%
+	);
+}

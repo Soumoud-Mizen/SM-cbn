@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons left>
+      <button
+      fill="clear"
+        ion-button
+        icon-only
+        (click)="modalCtrl.dismiss()"
+      >
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+      <ion-title>Ajouter un moyen de paiement</ion-title>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br /><br />
+  <ion-card class="welcome-card">
+    <br />
+    <ion-card-content>
+      <form action="/" method="post" id="payment-form">
+        <div class="form-row">
+          <div id="card-element">
+            <!-- a Stripe Element will be inserted here. -->
+          </div>
+          <!-- Used to display Element errors -->
+          <div id="card-errors" role="alert"></div>
+          <br /><br />
+        </div>
+        <ion-button type="submit" color="success" expand="full"
+          ><ion-icon name="add-circle" slot="start"></ion-icon>
+          Ajouter</ion-button
+        >
+        <br />
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
