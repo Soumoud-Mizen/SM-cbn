@@ -197,8 +197,9 @@ exports.loginUser = async (req, res) => {
     }
 
     const isMatch = await bcrypt.compare(mot_de_passe, user.mot_de_passe);
-
+    
     if (!isMatch) {
+      console.log('no match')
       return res
         .status(400)
         .json({ msg: "Les informations d'identification invalides" });
@@ -226,6 +227,7 @@ exports.loginUser = async (req, res) => {
       { expiresIn: 360000 },
       (err, token) => {
         if (err) throw err;
+        
         return res.json({ token });
       }
     );
@@ -505,13 +507,13 @@ exports.getContactProvidersForConsumer = async (req, res) => {
 
 exports.getProvidersForConsumer = async (req, res) => {
   try {
-    const user = await User.findById(req.user.id);
+    /*const user = await User.findById(req.user.id);
     if (user === null || user.role !== 'consumer') {
       return res.status(401).json({ msg: 'Pas autorisé' });
-    }
+    }*/
     const providers = await User.find({
       role: 'provider',
-      productsCounts: { $gt: 0 }
+      productsCounts: { $gt: 0 } 
     }).select('-password');
     return res.json(providers);
   } catch (err) {

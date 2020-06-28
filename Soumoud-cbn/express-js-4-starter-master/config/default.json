@@ -1,5 +1,5 @@
 {
-	"mongoURI": "mongodb+srv://CHICHA-BY-NIGHT:CHICHA-BY-NIGHT%2F*@cluster0-jq94c.mongodb.net/test?retryWrites=true",
+	"mongoURI": "mongodb+srv://chichabynight31:URUk77Zja66Qjd6@cluster0-lxah3.gcp.mongodb.net/?authSource=admin&readPreference=primary&appname=MongoDB%20Compass&ssl=true",
 	"jwtSecret": "D7FHHDFHFD8H5456FDH4",
 	"SECRET_API_KEY_STRIPE": "sk_test_kMJJXPT9JO4KbRgE0jc4XXyA007htIZ5aF"
 }
