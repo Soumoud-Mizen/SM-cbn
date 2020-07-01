@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.chichabynight.o" version="0.1.7" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Ion Starter 4</name>
-    <description>Ionic starter 4</description>
+    <name>Chicha By Night</name>
+    <description>Powered by chicha by night </description>
     <author email="contact@FullBunch.com" href="http://FullBunch.com/">Full Bunch</author>
     <content src="index.html" />
     <access origin="*" />
