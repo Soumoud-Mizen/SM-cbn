@@ -335,6 +335,7 @@ export class ConsumerAppUsePage implements OnInit {
 
     this.service.getProvidersForConsumer().subscribe(
       providers => {
+       
         this.providers = providers;
         this.arrayMarkers = [];
 
@@ -349,6 +350,7 @@ export class ConsumerAppUsePage implements OnInit {
             icon: null
           });
         });
+        
       },
       err => {
         console.error('error get providers: ' + err);
@@ -487,4 +489,9 @@ export class ConsumerAppUsePage implements OnInit {
     this.menu.enable(false, 'adminMenu');
     this.menu.enable(false, 'providerMenu');
   }
+
+  ionViewWillLeave() {
+    this.map.setDiv()
+  }
+
 }

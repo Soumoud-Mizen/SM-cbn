@@ -49,6 +49,8 @@ export class RoomPage {
               )
               .on('value', resp => {
                 this.chats = [];
+                console.log('resp' , resp);
+                
                 this.chats = snapshotToArray(resp);
               });
           },

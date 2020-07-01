@@ -33,7 +33,7 @@ declare var google;
 export class GuestPage implements OnInit {
   map: GoogleMap;
   nearProviderIndex: any;
-  arrayMarkers: any;
+  arrayMarkers: any=[];
   nearProviderTitle: string = '';
   selectedProviderID: string = '';
   loading: boolean;
@@ -330,7 +330,7 @@ export class GuestPage implements OnInit {
       API_KEY_FOR_BROWSER_RELEASE: 'AIzaSyBgRCFY8c0I42fnMgdY6tEYwVoBrDl_GSs',
       API_KEY_FOR_BROWSER_DEBUG: 'AIzaSyBgRCFY8c0I42fnMgdY6tEYwVoBrDl_GSs'
     });
-
+ 
     this.service.getProvidersForConsumer().subscribe(
       providers => {
         this.providers = providers;
@@ -348,9 +348,9 @@ export class GuestPage implements OnInit {
           });
         });
       },
-      err => {
+      /*err => {
         console.error('error get providers: ' + err);
-      },
+      },*/
       () => {
         this.geolocation.getCurrentPosition().then(
           position => {
@@ -363,6 +363,7 @@ export class GuestPage implements OnInit {
             let R = 6371; // radius of earth in km
             let distances = [];
             let closest = -1;
+           
 
             for (let i = 0; i < this.arrayMarkers.length; i++) {
               let mlat = this.arrayMarkers[i].position.lat;
@@ -382,7 +383,9 @@ export class GuestPage implements OnInit {
                 closest = i;
               }
             }
+           
             if (this.arrayMarkers[closest].title !== 'Votre position') {
+
               this.nearProviderIndex = closest;
               this.nearProviderTitle = this.arrayMarkers[closest].title;
             }

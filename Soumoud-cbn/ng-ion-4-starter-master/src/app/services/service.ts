@@ -80,13 +80,16 @@ export class Service {
   }
 
   public getProductsForConsumerByIDProvider(id) {
-    let __token = localStorage.getItem('currentUserToken');
-
+    let __token = localStorage.getItem('currentUserToken');   
     return this.http
       .post<any>(
         `${environment.bffUrl}/api/get-products-for-user-by-id-provider/${id}`,
         {},
-        {}
+        {
+          headers: new HttpHeaders({
+            'x-auth-token': __token
+          })
+        }
       )
       .pipe(
         map(res => {
@@ -280,7 +283,7 @@ export class Service {
       )
       .pipe(
         map(res => {
-          console.log(res);
+          
           return res;
         })
       );
@@ -361,7 +364,7 @@ export class Service {
         }
       )
       .pipe(
-        map(res => {
+        map(res => { 
           console.log(res);
           return res;
         })
@@ -400,7 +403,7 @@ export class Service {
       )
       .pipe(
         map(res => {
-          console.log(res);
+          
           return res;
         })
       );
@@ -519,7 +522,11 @@ export class Service {
       .post<any>(
         `${environment.bffUrl}/api/get-provider-for-consumer/${id}`,
         {},
-        {}
+        {
+          headers: new HttpHeaders({
+            'x-auth-token': localStorage.getItem('currentUserToken')
+          })
+        }
       )
       .pipe(
         map(res => {
@@ -592,11 +599,18 @@ export class Service {
       );
   }
 
-  public getProvidersForConsumer() {
+  public getProvidersForConsumer() {    
     return this.http
-      .post<any>(`${environment.bffUrl}/api/get-providers-for-consumer`, {}, {})
+      .post<any>(`${environment.bffUrl}/api/get-providers-for-consumer`, {}, 
+      {
+        headers: new HttpHeaders({
+          'x-auth-token': localStorage.getItem('currentUserToken')
+        })
+      })
       .pipe(
         map(res => {
+          
+          
           return res;
         })
       );

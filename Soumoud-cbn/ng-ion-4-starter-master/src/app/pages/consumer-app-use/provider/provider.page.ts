@@ -444,7 +444,7 @@ export class ProviderPage implements OnInit {
                   },
                   err => {
                     this.dismissLoading();
-                    console.log('err : consumers', err);
+                    console.log('err : consumers get product ', err);
                   },
                   () => { }
                 );

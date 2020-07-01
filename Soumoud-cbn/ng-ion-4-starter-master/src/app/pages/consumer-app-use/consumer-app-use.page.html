@@ -3,9 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button menu="consumerMenu" slot="start"></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Commander
-    </ion-title>
+    <ion-title> Commander </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,12 +12,6 @@
     <div class="loader-32"></div>
   </div>
   <div id="map_canvas"></div>
-  <ion-button
-    *ngIf="nearProviderTitle !== ''"
-    id="btn-cmd"
-    (click)="presentAlertConfirm(nearProviderTitle)"
-    expand="full"
-    color="secondary"
-    >Parcourir {{ nearProviderTitle }}</ion-button
-  >
+  <ion-button *ngIf="nearProviderTitle !== '' && nearProviderTitle !== 'Votre position'" id="btn-cmd" (click)="presentAlertConfirm(nearProviderTitle)"
+    expand="full" color="secondary">Parcourir {{ nearProviderTitle }}</ion-button>
 </ion-content>

@@ -33,7 +33,7 @@ export class RoomPage {
         this.Service.getUserProfile().subscribe(
           userProfile => {
             this.userData = userProfile;
-
+                       
             firebase
               .database()
               .ref(
@@ -45,6 +45,8 @@ export class RoomPage {
               )
               .on('value', resp => {
                 this.chats = [];
+                console.log('firebase data ' , resp);
+                
                 this.chats = snapshotToArray(resp);
               });
           },

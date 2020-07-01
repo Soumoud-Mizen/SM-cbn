@@ -90,7 +90,7 @@ export class LoginPage implements OnInit {
         error => {
           this.loading = false;
           this.dismissLoading();
-          // console.log('error', error);
+           console.log('error', error);
           this.presentAlert(error.error.msg);
         }
       );

@@ -45,7 +45,7 @@ import { AppRate } from '@ionic-native/app-rate/ngx';
     StatusBar,
     SplashScreen,
     // Remove this line if you want to use the real BFF API
-    dummyBackendProvider,
+    //dummyBackendProvider,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     File,

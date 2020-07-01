@@ -478,7 +478,7 @@ export class EditUserPage implements OnInit {
         },
         err => {
           console.log(err);
-          alert(err);
+          //alert(err);
         }
       );
   }

@@ -22,11 +22,14 @@ export class ProvidersPage  {
   }
 
  ionViewWillEnter() {
+   console.log('did enter');
+   
     this.service.getProvidersForAdmin().subscribe(
       providers => {
+             
         this.providers = providers;
         this.providersUntouched = providers;
-        this.dismissLoading();
+        this.dismissLoading(); 
       },
       err => {
         this.dismissLoading();
