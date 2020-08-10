@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ConsumersPage } from './consumers.page';
-
+// routes
 const routes: Routes = [
   {
     path: '',
