@@ -1,6 +1,6 @@
 # Build Ionic 4, Angular 8 and Firebase , Stripe, Google maps...
 
-This source code developed by [FullBunch.com](http://www.fullbunch.com/) .
+steps;
 
 * Clone this repo
 * Install :
