@@ -1,6 +1,6 @@
 # ExpressJS 4 starter
 
-This source code developed by [FullBunch.com](http://www.fullbunch.com/) .
+steps:
 
 * Clone this repo
 * Create a folder /images
